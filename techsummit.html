@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSummit 2026 - College Workshop</title>
+    <style>
+        /* ==========================================================================
+           1. BASE & RESET STYLES
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* ==========================================================================
+           2. NAVIGATION (FLEXBOX)
+           ========================================================================== */
+        header {
+            background-color: #1e293b;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* ==========================================================================
+           3. LAYOUT & SECTIONS (GRID & FLEXBOX)
+           ========================================================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+            color: #0f172a;
+            border-bottom: 3px solid #38bdf8;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        /* Responsive Speaker Grid */
+        .speaker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .speaker-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            background: #fafafa;
+        }
+
+        .speaker-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        /* Responsive Table */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f1f5f9;
+        }
+
+        /* ==========================================================================
+           4. FORM STYLES & VALIDATION ALERTS
+           ========================================================================== */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .fee-display {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+        }
+
+        button[type="submit"] {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0369a1;
+        }
+
+        .error-message {
+            color: #dc2626;
+            font-size: 0.875rem;
+            display: none;
+            margin-top: 0.25rem;
+        }
+
+        .success-box {
+            display: none;
+            background-color: #dcfce7;
+            color: #15803d;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           5. MEDIA QUERIES (RESPONSIVENESS)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <div class="logo">TechSummit 2026</div>
+            <ul class="nav-links">
+                <li><a href="#details">Details</a></li>
+                <li><a href="#speakers">Speakers</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- Event Details & Multimedia Section -->
+        <section id="details">
+            <h2>About the Workshop</h2>
+            <p>Join us for an intensive 2-day hands-on workshop covering Modern Web Architecture, AI Integration, and Responsive Design Patterns.</p>
+            <br>
+            <p><strong>Venue:</strong> Campus Main Auditorium & Lab 3</p>
+            <p><strong>Date:</strong> October 15–16, 2026</p>
+            
+            <h3 style="margin-top: 1.5rem;">Teaser Video</h3>
+            <div style="margin-top: 0.5rem;">
+                <video controls style="width: 100%; max-width: 600px; border-radius: 6px;">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+        <!-- Keynote Speakers -->
+        <section id="speakers">
+            <h2>Keynote Speakers</h2>
+            <div class="speaker-grid">
+                <div class="speaker-card">
+                    <img src="https://via.placeholder.com/100" alt="Speaker 1">
+                    <h3>Dr. Sarah Jenkins</h3>
+                    <p>AI Specialist, Tech Corp</p>
+                </div>
+                <div class="speaker-card">
+                    <img src="https://via.placeholder.com/100" alt="Speaker 2">
+                    <h3>Prof. Alex Rivera</h3>
+                    <p>Head of CS, State University</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="schedule">
+            <h2>Workshop Schedule</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Session</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>09:00 AM - 10:30 AM</td>
+                            <td>Keynote: Future of Web Dev</td>
+                            <td>Auditorium</td>
+                        </tr>
+                        <tr>
+                            <td>11:00 AM - 01:00 PM</td>
+                            <td>Hands-on JavaScript & DOM Manipulation</td>
+                            <td>Lab 3</td>
+                        </tr>
+                        <tr>
+                            <td>02:00 PM - 04:30 PM</td>
+                            <td>Responsive Layouts with Grid & Flexbox</td>
+                            <td>Lab 3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Instructions & Gallery Section -->
+        <section id="gallery">
+            <h2>Instructions & Past Highlights</h2>
+            <ul style="margin-left: 1.2rem; margin-bottom: 1.5rem;">
+                <li>Bring your college ID card for verification.</li>
+                <li>Laptops are required for the lab practical sessions.</li>
+            </ul>
+            
+            <div class="gallery-grid">
+                <img src="https://via.placeholder.com/300x180?text=Workshop+1" alt="Past Event 1">
+                <img src="https://via.placeholder.com/300x180?text=Workshop+2" alt="Past Event 2">
+                <img src="https://via.placeholder.com/300x180?text=Workshop+3" alt="Past Event 3">
+            </div>
+        </section>
+
+        <!-- Registration Form Section -->
+        <section id="register">
+            <h2>Registration Form</h2>
+            <form id="registrationForm" novalidate>
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" placeholder="John Doe">
+                    <div class="error-message" id="nameError">Please enter your full name.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="john@example.com">
+                    <div class="error-message" id="emailError">Please enter a valid email address.</div>
+                </div>
+
+                <!-- Dynamic Participant Category Selection -->
+                <div class="form-group">
+                    <label for="category">Participant Category</label>
+                    <select id="category">
+                        <option value="">-- Select Category --</option>
+                        <option value="student">Student ($20)</option>
+                        <option value="faculty">Faculty Member ($50)</option>
+                        <option value="professional">Industry Professional ($100)</option>
+                    </select>
+                    <div class="error-message" id="categoryError">Please select a participant category.</div>
+                </div>
+
+                <!-- Dynamic Fee Display -->
+                <div class="fee-display" id="feeDisplay">
+                    Total Fee: $0
+                </div>
+
+                <button type="submit">Complete Registration</button>
+            </form>
+
+            <div class="success-box" id="successBox">
+                Registration successful! We look forward to seeing you at the summit.
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JavaScript logic -->
+    <script>
+        // DOM Elements
+        const form = document.getElementById('registrationForm');
+        const categorySelect = document.getElementById('category');
+        const feeDisplay = document.getElementById('feeDisplay');
+        const successBox = document.getElementById('successBox');
+
+        // Dynamic Fee Calculation mapping
+        const feeStructure = {
+            student: 20,
+            faculty: 50,
+            professional: 100
+        };
+
+        // Event Handler: Update calculated fee on dynamic selection change
+        categorySelect.addEventListener('change', function() {
+            const selectedCategory = this.value;
+            const fee = feeStructure[selectedCategory] || 0;
+            
+            // DOM Update
+            feeDisplay.textContent = `Total Fee: $${fee}`;
+        });
+
+        // Event Handler: Form Submission & Validation
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent full page refresh
+            
+            let isValid = true;
+
+            // DOM elements for form inputs
+            const fullName = document.getElementById('fullName');
+            const email = document.getElementById('email');
+
+            // Reset error messages
+            document.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+
+            // Name Validation
+            if (fullName.value.trim() === '') {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Email Validation (basic format validation)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value.trim())) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Category Validation
+            if (categorySelect.value === '') {
+                document.getElementById('categoryError').style.display = 'block';
+                isValid = false;
+            }
+
+            // If validation passes, display success message and reset form
+            if (isValid) {
+                successBox.style.display = 'block';
+                form.reset();
+                feeDisplay.textContent = 'Total Fee: $0';
+            } else {
+                successBox.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
